@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAKwhAmUQIuUq3hTb1vgQY8wAAAAACAAAAAAADZgAAwAAAABAAAAB9tv37syE0cKtW2ufqjDovAAAAAASAAACgAAAAEAAAACs6DAH+w5LMXxycqXtMD6WAAAAA7dZBhoXQ4QyRvSNamj+a2FN7Ds81BD0Vtk3G2UGXrfVPXPaJ5Qq78T7DI+yl/JlNo1gZ+E1Rf0QnrI87EHukzoGrt3RIoWTzQ3HMX4jHRmaCnxo8A6ILL274eg/adzoWjMG/U2wvqIDENo9qDuUtaw74gTMczJFkBwSI7AjJ05wUAAAAcVV/hro3zx+zrURmiQV6VV6yV6k=</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <EfMigrations Include="Generic.Web.Infrastructure.PhotoGalleryContext">
+      <Value>Data Source=tcp:genericweb20160810115205dbserver.database.windows.net,1433;Initial Catalog=GenericWeb20160810115205_db;User Id=yobannys.cabrera@genericweb20160810115205dbserver;Password=Matrix123</Value>
+    </EfMigrations>
+  </ItemGroup>
+</Project>
