@@ -20,7 +20,7 @@ var DataService = (function () {
     };
     DataService.prototype.get = function (page) {
         var uri = this._baseUri + page.toString() + '/' + this._pageSize.toString();
-        return this.http.get(uri)
+        return this.http.get(uri, { headers: new http_1.Headers() })
             .map(function (response) { return (response); });
     };
     DataService.prototype.post = function (data, mapJson) {
@@ -32,11 +32,11 @@ var DataService = (function () {
             return this.http.post(this._baseUri, data);
     };
     DataService.prototype.delete = function (id) {
-        return this.http.delete(this._baseUri + '/' + id.toString())
+        return this.http.delete(this._baseUri + '/' + id.toString(), { headers: new http_1.Headers() })
             .map(function (response) { return response.json(); });
     };
     DataService.prototype.deleteResource = function (resource) {
-        return this.http.delete(resource)
+        return this.http.delete(resource, { headers: new http_1.Headers() })
             .map(function (response) { return response.json(); });
     };
     DataService = __decorate([

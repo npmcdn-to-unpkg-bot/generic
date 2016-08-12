@@ -43,7 +43,6 @@ var Photos = (function (_super) {
         _super.prototype.search.call(this, i);
         this.getPhotos();
     };
-    ;
     Photos = __decorate([
         core_1.Component({
             selector: 'photos',

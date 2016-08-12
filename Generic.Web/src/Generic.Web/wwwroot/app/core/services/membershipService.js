@@ -28,7 +28,7 @@ var MembershipService = (function () {
     };
     MembershipService.prototype.logout = function () {
         this.accountService.set(this._accountLogoutAPI);
-        return this.accountService.post(null, false);
+        return this.accountService.post(this.getLoggedInUser(), false);
     };
     MembershipService.prototype.isUserAuthenticated = function () {
         var _user = localStorage.getItem('user');
