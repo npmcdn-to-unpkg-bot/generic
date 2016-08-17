@@ -14,7 +14,7 @@ namespace Generic.Web.Infrastructure.Repositories
             where T : class, IEntityBase, new()
     {
 
-        private PhotoGalleryContext _context;
+        protected PhotoGalleryContext _context;
 
         #region Properties
         public EntityBaseRepository(PhotoGalleryContext context)

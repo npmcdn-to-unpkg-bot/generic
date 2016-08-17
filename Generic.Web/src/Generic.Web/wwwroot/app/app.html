@@ -13,6 +13,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
+                    <a [routerLink]="[routes.products.name]"><i class="fa fa-product-hunt"></i>&nbsp;Products</a>
+                </li>
+                <li>
                     <a href="http://wp.me/p3mRWu-11L" target="_blank"><i class="fa fa-info fa-fw"></i>&nbsp;About</a>
                 </li>
                 <li>
@@ -44,7 +47,7 @@
                             <a [routerLink]="['/Account/Login']"><i class="fa fa-unlock-alt fa-fw"></i>&nbsp;Sign in</a>
                         </li>
                         <li *ngIf="isUserLoggedIn()">
-                            <a  [routerLink]="[routes.home.name]" (click)="logout()"><i class="fa fa-power-off fa-fw"></i>&nbsp;Logout</a>
+                            <a [routerLink]="[routes.home.name]" (click)="logout()"><i class="fa fa-power-off fa-fw"></i>&nbsp;Logout</a>
                         </li>
                     </ul>
                 </li>

@@ -59,6 +59,7 @@ namespace Generic.Web
             services.AddScoped<IUserRoleRepository, UserRoleRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<ILoggingRepository, LoggingRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
 
             // Services
             services.AddScoped<IMembershipService, MembershipService>();
