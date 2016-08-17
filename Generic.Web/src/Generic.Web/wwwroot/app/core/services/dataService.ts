@@ -23,6 +23,12 @@ export class DataService {
             .map(response => (<Response>response));
     }
 
+    getSingle(id: number) {
+        const uri = `${this._baseUri}/${id}`;
+        return this.http.get(uri, { headers: new Headers() })
+            .map(response => (<Response>response));
+    }
+
     post(data?: any, mapJson: boolean = true) {
         if (mapJson)
             return this.http.post(this._baseUri, data)

@@ -8,9 +8,10 @@ using Generic.Web.Infrastructure;
 namespace Generic.Web.Migrations
 {
     [DbContext(typeof(PhotoGalleryContext))]
-    partial class PhotoGalleryContextModelSnapshot : ModelSnapshot
+    [Migration("20160816182204_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")

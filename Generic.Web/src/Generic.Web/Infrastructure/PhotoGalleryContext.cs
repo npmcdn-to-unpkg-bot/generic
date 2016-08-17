@@ -13,6 +13,12 @@ namespace Generic.Web.Infrastructure
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Error> Errors { get; set; }
 
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductType> ProductTypes { get; set; }
+        public DbSet<ProductStatus> ProductsStatusCollection { get; set; }
+        public DbSet<Status> Statuses { get; set; }
+        public DbSet<Occasion> Occasions { get; set; }
+
         public PhotoGalleryContext(DbContextOptions options) : base(options)
         {
         }
@@ -45,6 +51,50 @@ namespace Generic.Web.Infrastructure
 
             // Role
             modelBuilder.Entity<Role>().Property(r => r.Name).IsRequired().HasMaxLength(50);
+
+            //Product
+            modelBuilder.Entity<Product>().Property(p => p.Name).IsRequired().HasMaxLength(50);
+            modelBuilder.Entity<Product>().Property(p => p.Description).HasMaxLength(5000);
+            modelBuilder.Entity<Product>().Property(p => p.Code).IsRequired().HasMaxLength(8);
+
+            //ProductType
+            modelBuilder.Entity<ProductType>().Property(pc => pc.Name).IsRequired().HasMaxLength(50);
+
+            //Status
+            modelBuilder.Entity<Status>().Property(pc => pc.Name).IsRequired().HasMaxLength(50);
+            modelBuilder.Entity<Status>().Property(pc => pc.Description).IsRequired().HasMaxLength(500);
+
+            //managing many to many relationship
+            modelBuilder.Entity<ProductTypeStatus>()
+                .HasKey(t => new { t.ProductTypeId, t.StatusId});
+
+            modelBuilder.Entity<ProductTypeStatus>()
+                .HasOne(pt => pt.ProductType)
+                .WithMany(p => p.ProductTypeStatuses)
+                .HasForeignKey(pt => pt.ProductTypeId);
+
+            modelBuilder.Entity<ProductTypeStatus>()
+                .HasOne(pt => pt.Status)
+                .WithMany(p => p.ProductTypeStatuses)
+                .HasForeignKey(pt => pt.StatusId);
+
+            //occasions
+            modelBuilder.Entity<Occasion>().Property(pc => pc.Name).IsRequired().HasMaxLength(50);
+            modelBuilder.Entity<Occasion>().Property(pc => pc.Description).IsRequired().HasMaxLength(500);
+
+            //managing many to many relationship
+            modelBuilder.Entity<ProductOccasion>()
+                .HasKey(t => new { t.ProductId, t.OccasionId });
+
+            modelBuilder.Entity<ProductOccasion>()
+                .HasOne(pt => pt.Product)
+                .WithMany(p => p.ProductOccasions)
+                .HasForeignKey(pt => pt.ProductId);
+
+            modelBuilder.Entity<ProductOccasion>()
+                .HasOne(pt => pt.Occasion)
+                .WithMany(p => p.ProductOccasions)
+                .HasForeignKey(pt => pt.OccasionId);
         }
     }
 }
