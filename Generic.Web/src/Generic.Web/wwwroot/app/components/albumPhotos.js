@@ -14,7 +14,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_deprecated_1 = require('@angular/router-deprecated');
 var paginated_1 = require('../core/common/paginated');
 var dataService_1 = require('../core/services/dataService');
 var utilityService_1 = require('../core/services/utilityService');
@@ -22,17 +21,16 @@ var notificationService_1 = require('../core/services/notificationService');
 var operationResult_1 = require('../core/domain/operationResult');
 var AlbumPhotos = (function (_super) {
     __extends(AlbumPhotos, _super);
-    function AlbumPhotos(dataService, utilityService, notificationService, routeParam) {
+    function AlbumPhotos(dataService, utilityService, notificationService) {
         _super.call(this, 0, 0, 0);
         this.dataService = dataService;
         this.utilityService = utilityService;
         this.notificationService = notificationService;
-        this.routeParam = routeParam;
         this._albumsAPI = 'api/albums/';
         this._photosAPI = 'api/photos/';
     }
     AlbumPhotos.prototype.ngOnInit = function () {
-        this._albumId = this.routeParam.get('id');
+        //this._albumId = this.routeParam.get('id');
         this._albumsAPI += this._albumId + '/photos/';
         this.dataService.set(this._albumsAPI, 12);
         this.getAlbumPhotos();
@@ -86,10 +84,9 @@ var AlbumPhotos = (function (_super) {
         core_1.Component({
             selector: 'album-photo',
             providers: [notificationService_1.NotificationService],
-            templateUrl: './app/components/albumPhotos.html',
-            directives: [router_deprecated_1.RouterLink]
+            templateUrl: './app/components/albumPhotos.html'
         }), 
-        __metadata('design:paramtypes', [dataService_1.DataService, utilityService_1.UtilityService, notificationService_1.NotificationService, router_deprecated_1.RouteParams])
+        __metadata('design:paramtypes', [dataService_1.DataService, utilityService_1.UtilityService, notificationService_1.NotificationService])
     ], AlbumPhotos);
     return AlbumPhotos;
 }(paginated_1.Paginated));

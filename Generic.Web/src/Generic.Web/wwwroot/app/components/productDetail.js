@@ -10,31 +10,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var dataService_1 = require('../core/services/dataService');
+var productDetail_service_1 = require('../core/services/productDetail.service');
 var ProductDetailComponent = (function () {
     function ProductDetailComponent(route, productDetailService) {
         this.route = route;
         this.productDetailService = productDetailService;
-        this._productDetailsAPI = 'api/product/';
     }
     ProductDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.productDetailService.set(this._productDetailsAPI);
-        this.route.params.forEach(function (params) {
-            var id = +params['id'];
-            _this.productDetailService.getSingle(id)
-                .subscribe(function (res) {
-                console.log(res.json());
-            }, function (error) { return console.error(("Error: " + error)); });
+        this.route.params.subscribe(function (params) {
+            var id = parseInt(params['id'], 10);
+            _this.getDetails(id);
         });
+    };
+    ProductDetailComponent.prototype.getDetails = function (id) {
+        var _this = this;
+        this.productDetailService
+            .getProductDetail(id)
+            .then(function (detail) { return _this._productDetail = detail; });
     };
     ProductDetailComponent = __decorate([
         core_1.Component({
             selector: 'product-details',
             templateUrl: './app/components/productDetail.html',
-            providers: [dataService_1.DataService]
+            styleUrls: ['./app/components/productDetail.css']
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, dataService_1.DataService])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, productDetail_service_1.ProductDetailService])
     ], ProductDetailComponent);
     return ProductDetailComponent;
 }());

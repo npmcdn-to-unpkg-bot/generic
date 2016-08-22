@@ -3,8 +3,7 @@ import { Product } from '../core/domain/product';
 import { Paginated } from '../core/common/paginated';
 import { DataService } from '../core/services/dataService';
 
-import { Router } from '@angular/router-deprecated';
-import { Routes, APP_ROUTES } from '../routes';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'products',
@@ -15,7 +14,6 @@ import { Routes, APP_ROUTES } from '../routes';
 export class ProductsComponent extends Paginated implements OnInit{
     private _productsAPI: string = 'api/product/';
     private _products: Array<Product>;
-    private routes = Routes;
 
     constructor(
         public productService: DataService,
@@ -48,6 +46,6 @@ export class ProductsComponent extends Paginated implements OnInit{
     }
 
     gotoDetail(id: number) {
-        this.router.navigate([this.routes.productDetails.name, id]);
+        this.router.navigate(['/productDetail', id]);
     }
 }

@@ -10,8 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
-var router_deprecated_1 = require('@angular/router-deprecated');
-var routes_1 = require('./routes');
+var router_1 = require('@angular/router');
 var user_1 = require('../../core/domain/user');
 var operationResult_1 = require('../../core/domain/operationResult');
 var membershipService_1 = require('../../core/services/membershipService');
@@ -21,11 +20,9 @@ var Login = (function () {
         this.membershipService = membershipService;
         this.notificationService = notificationService;
         this.router = router;
-        this.routes = routes_1.Routes;
     }
     Login.prototype.ngOnInit = function () {
         this._user = new user_1.User('', '');
-        this.routes = routes_1.Routes;
     };
     Login.prototype.login = function () {
         var _this = this;
@@ -38,7 +35,7 @@ var Login = (function () {
             if (_authenticationResult.Succeeded) {
                 _this.notificationService.printSuccessMessage('Welcome back ' + _this._user.Username + '!');
                 localStorage.setItem('user', JSON.stringify(_this._user));
-                _this.router.navigate([_this.routes.home.name]);
+                _this.router.navigate(['/home']);
             }
             else {
                 _this.notificationService.printErrorMessage(_authenticationResult.Message);
@@ -51,9 +48,9 @@ var Login = (function () {
             selector: 'login',
             providers: [membershipService_1.MembershipService, notificationService_1.NotificationService],
             templateUrl: './app/components/account/login.html',
-            directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES, router_deprecated_1.RouterLink]
+            directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES,]
         }), 
-        __metadata('design:paramtypes', [membershipService_1.MembershipService, notificationService_1.NotificationService, router_deprecated_1.Router])
+        __metadata('design:paramtypes', [membershipService_1.MembershipService, notificationService_1.NotificationService, router_1.Router])
     ], Login);
     return Login;
 }());

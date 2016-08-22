@@ -19,10 +19,10 @@ var dataService_1 = require('../core/services/dataService');
 var router_1 = require('@angular/router');
 var ProductsComponent = (function (_super) {
     __extends(ProductsComponent, _super);
-    function ProductsComponent(router, productService) {
+    function ProductsComponent(productService, router) {
         _super.call(this, 0, 0, 0);
-        this.router = router;
         this.productService = productService;
+        this.router = router;
         this._productsAPI = 'api/product/';
     }
     ProductsComponent.prototype.ngOnInit = function () {
@@ -54,7 +54,7 @@ var ProductsComponent = (function (_super) {
             styleUrls: ['./app/components/products.css'],
             providers: [dataService_1.DataService]
         }), 
-        __metadata('design:paramtypes', [router_1.Router, dataService_1.DataService])
+        __metadata('design:paramtypes', [dataService_1.DataService, router_1.Router])
     ], ProductsComponent);
     return ProductsComponent;
 }(paginated_1.Paginated));

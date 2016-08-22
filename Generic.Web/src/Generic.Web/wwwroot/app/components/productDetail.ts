@@ -1,34 +1,33 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ProductDetail } from '../core/domain/productDetail';
-import { DataService } from '../core/services/dataService';
+import { ProductDetailService } from '../core/services/productDetail.service';
 
 @Component({
     selector: 'product-details',
     templateUrl: './app/components/productDetail.html',
-    providers: [DataService]
+    styleUrls: ['./app/components/productDetail.css']
 })
 export class ProductDetailComponent implements OnInit {
-
-    private _productDetailsAPI: string = 'api/product/';
-    private _product: ProductDetail;
+    
+    private _productDetail: ProductDetail;
+    error: any;
 
     constructor(
         private route: ActivatedRoute,
-        private productDetailService: DataService) {
+        private productDetailService: ProductDetailService) {
     }
 
     ngOnInit() {
-        this.productDetailService.set(this._productDetailsAPI);
-
-        this.route.params.forEach((params: Params) => {
-            let id = +params['id'];
-            this.productDetailService.getSingle(id)
-                .subscribe(res => {
-                        console.log(res.json());
-                    },
-                error => console.error(<any>(`Error: ${error}`)));
+        this.route.params.subscribe(params => {
+            let id = parseInt(params['id'], 10);
+            this.getDetails(id);            
         });
+    }
 
+    getDetails(id: number): void {
+         this.productDetailService
+        .getProductDetail(id)
+        .then(detail => this._productDetail = detail)
     }
 } 

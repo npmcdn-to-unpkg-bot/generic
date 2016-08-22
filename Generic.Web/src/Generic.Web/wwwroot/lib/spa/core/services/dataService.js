@@ -24,7 +24,7 @@ var DataService = (function () {
             .map(function (response) { return (response); });
     };
     DataService.prototype.getSingle = function (id) {
-        var uri = this._baseUri + "/" + id;
+        var uri = "" + this._baseUri + id;
         return this.http.get(uri, { headers: new http_1.Headers() })
             .map(function (response) { return (response); });
     };

@@ -14,7 +14,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_deprecated_1 = require('@angular/router-deprecated');
 var paginated_1 = require('../core/common/paginated');
 var dataService_1 = require('../core/services/dataService');
 var Photos = (function (_super) {
@@ -48,7 +47,6 @@ var Photos = (function (_super) {
             selector: 'photos',
             providers: [dataService_1.DataService],
             templateUrl: './app/components/photos.html',
-            directives: [router_deprecated_1.RouterLink]
         }), 
         __metadata('design:paramtypes', [dataService_1.DataService])
     ], Photos);

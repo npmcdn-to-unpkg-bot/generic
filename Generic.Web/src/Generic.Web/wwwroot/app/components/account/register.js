@@ -9,8 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_deprecated_1 = require('@angular/router-deprecated');
-var routes_1 = require('./routes');
+var router_1 = require('@angular/router');
 var registration_1 = require('../../core/domain/registration');
 var operationResult_1 = require('../../core/domain/operationResult');
 var membershipService_1 = require('../../core/services/membershipService');
@@ -20,11 +19,9 @@ var Register = (function () {
         this.membershipService = membershipService;
         this.notificationService = notificationService;
         this.router = router;
-        this.routes = routes_1.Routes;
     }
     Register.prototype.ngOnInit = function () {
         this._newUser = new registration_1.Registration('', '', '');
-        this.routes = routes_1.Routes;
     };
     Register.prototype.register = function () {
         var _this = this;
@@ -36,7 +33,7 @@ var Register = (function () {
         }, function (error) { return console.error('Error: ' + error); }, function () {
             if (_registrationResult.Succeeded) {
                 _this.notificationService.printSuccessMessage('Dear ' + _this._newUser.Username + ', please login with your credentials');
-                _this.router.navigate([_this.routes.login.name]);
+                _this.router.navigate(["/account/login"]);
             }
             else {
                 _this.notificationService.printErrorMessage(_registrationResult.Message);
@@ -48,10 +45,9 @@ var Register = (function () {
         core_1.Component({
             selector: 'register',
             providers: [membershipService_1.MembershipService, notificationService_1.NotificationService],
-            templateUrl: './app/components/account/register.html',
-            directives: [router_deprecated_1.ROUTER_DIRECTIVES]
+            templateUrl: './app/components/account/register.html'
         }), 
-        __metadata('design:paramtypes', [membershipService_1.MembershipService, notificationService_1.NotificationService, router_deprecated_1.Router])
+        __metadata('design:paramtypes', [membershipService_1.MembershipService, notificationService_1.NotificationService, router_1.Router])
     ], Register);
     return Register;
 }());

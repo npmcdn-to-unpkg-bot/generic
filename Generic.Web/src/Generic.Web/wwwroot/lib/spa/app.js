@@ -11,9 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
-var router_deprecated_1 = require('@angular/router-deprecated');
 var common_2 = require('@angular/common');
-var routes_1 = require('./routes');
 require('rxjs/add/operator/map');
 var membershipService_1 = require('./core/services/membershipService');
 core_1.enableProdMode();
@@ -21,10 +19,8 @@ var AppRoot = (function () {
     function AppRoot(membershipService, location) {
         this.membershipService = membershipService;
         this.location = location;
-        this.routes = routes_1.Routes;
     }
     AppRoot.prototype.ngOnInit = function () {
-        this.routes = routes_1.Routes;
         this.location.go('/');
     };
     AppRoot.prototype.isUserLoggedIn = function () {
@@ -48,9 +44,8 @@ var AppRoot = (function () {
         core_1.Component({
             selector: 'photogallery-app',
             templateUrl: './app/app.html',
-            directives: [router_deprecated_1.ROUTER_DIRECTIVES, common_1.CORE_DIRECTIVES]
-        }),
-        router_deprecated_1.RouteConfig(routes_1.APP_ROUTES), 
+            directives: [common_1.CORE_DIRECTIVES]
+        }), 
         __metadata('design:paramtypes', [membershipService_1.MembershipService, common_2.Location])
     ], AppRoot);
     return AppRoot;

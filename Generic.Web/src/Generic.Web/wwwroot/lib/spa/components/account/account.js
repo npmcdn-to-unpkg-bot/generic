@@ -10,8 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
-var router_deprecated_1 = require('@angular/router-deprecated');
-var routes_1 = require('./routes');
 var Account = (function () {
     function Account() {
     }
@@ -19,9 +17,8 @@ var Account = (function () {
         core_1.Component({
             selector: 'account',
             templateUrl: './app/components/account/account.html',
-            directives: [router_deprecated_1.ROUTER_DIRECTIVES, common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES]
-        }),
-        router_deprecated_1.RouteConfig(routes_1.APP_ROUTES), 
+            directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES]
+        }), 
         __metadata('design:paramtypes', [])
     ], Account);
     return Account;

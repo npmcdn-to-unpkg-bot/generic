@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from '@angular/common';
-import { Router, RouterLink } from '@angular/router-deprecated'
+//import { Router, RouterLink } from '@angular/router-deprecated'
 import { Photo } from '../core/domain/photo';
 import { Paginated } from '../core/common/paginated';
 import { DataService } from '../core/services/dataService';
@@ -9,7 +9,7 @@ import { DataService } from '../core/services/dataService';
     selector: 'photos',
     providers: [DataService],
     templateUrl: './app/components/photos.html',
-    directives: [RouterLink]
+    //directives: [RouterLink]
 })
 export class Photos extends Paginated implements OnInit {
     private _photosAPI: string = 'api/photos/';

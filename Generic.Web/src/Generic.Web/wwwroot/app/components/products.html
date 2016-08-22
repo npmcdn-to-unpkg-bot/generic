@@ -7,40 +7,42 @@
             </h1>
             <ol class="breadcrumb">
                 <li>
-                    <a [routerLink]="['/Home']">Home</a>
+                    <a [routerLink]="['/home']">Home</a>
                 </li>
                 <li class="active">Products</li>
             </ol>
         </div>
     </div>
-    <div class="row">
+    <div class="row products">
+
         <div class="col-md-2 column productbox" *ngFor="let product of _products">
             <a class="fancybox img-responsive" rel="gallery" href="{{product.ImageUrl}}">
-                <img src="{{product.ImageUrl}}" alt="{{product.Name}}" class="img img-responsive full-width thumbnail" />
+                <img src="{{product.ImageUrl}}" alt="{{product.Name}}" class="img img-responsive full-width thumbnail"/>
             </a>
             <div class="producttitle">{{product.Name}}</div>
             <div class="productcode">{{product.Code}}</div>
             <div class="productprice">
                 <div class="pull-right">
-                    <a href="#" class="btn btn-danger btn-sm" role="button" (click)="gotoDetail(product.Id)">Order now</a>
+                    <a class="btn btn-danger btn-sm" role="button" (click)="gotoDetail(product.Id)">Order now</a>
                 </div>
                 <div class="pricetext">{{product.Price | currency :'USD':true:'1.2-2'}}</div>
             </div>
         </div>
+
     </div>
 </div>
 <footer class="navbar navbar-fixed-bottom">
     <div class="text-center">
-        <div ng-hide="(!_pagesCount || _pagesCount < 2)" style="display:inline">
+        <div *ngIf="(_pagesCount && _pagesCount > 1)" style="display: inline">
             <ul class="pagination pagination-sm">
-                <li><a *ngIf="page != 0_" (click)="search(0)"><<</a></li>
-                <li><a *ngIf="_page != 0" (click)="search(_page-1)"><</a></li>
+                <li><a *ngIf="page != 0_" (click)="search(0)">&laquo;</a></li>
+                <li><a *ngIf="_page != 0" (click)="search(_page-1)">&lsaquo;</a></li>
                 <li *ngFor="let n of range()" [ngClass]="{active: n == _page}">
                     <a (click)="search(n)" *ngIf="n != _page">{{n+1}}</a>
                     <span *ngIf="n == _page">{{n+1}}</span>
                 </li>
-                <li><a *ngIf="_page != (_pagesCount - 1)" (click)="search(pagePlus(1))">></a></li>
-                <li><a *ngIf="_page != (_pagesCount - 1)" (click)="search(_pagesCount - 1)">>></a></li>
+                <li><a *ngIf="_page != (_pagesCount - 1)" (click)="search(pagePlus(1))">&rsaquo;</a></li>
+                <li><a *ngIf="_page != (_pagesCount - 1)" (click)="search(_pagesCount - 1)">&raquo;</a></li>
             </ul>
         </div>
     </div>

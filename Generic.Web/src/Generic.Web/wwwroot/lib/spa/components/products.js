@@ -16,8 +16,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var paginated_1 = require('../core/common/paginated');
 var dataService_1 = require('../core/services/dataService');
-var router_deprecated_1 = require('@angular/router-deprecated');
-var routes_1 = require('../routes');
+var router_1 = require('@angular/router');
 var ProductsComponent = (function (_super) {
     __extends(ProductsComponent, _super);
     function ProductsComponent(productService, router) {
@@ -25,7 +24,6 @@ var ProductsComponent = (function (_super) {
         this.productService = productService;
         this.router = router;
         this._productsAPI = 'api/product/';
-        this.routes = routes_1.Routes;
     }
     ProductsComponent.prototype.ngOnInit = function () {
         this.productService.set(this._productsAPI, 12);
@@ -47,7 +45,7 @@ var ProductsComponent = (function (_super) {
         this.getProducts();
     };
     ProductsComponent.prototype.gotoDetail = function (id) {
-        this.router.navigate([this.routes.productDetails.name, id]);
+        this.router.navigate(['/productDetail', id]);
     };
     ProductsComponent = __decorate([
         core_1.Component({
@@ -56,7 +54,7 @@ var ProductsComponent = (function (_super) {
             styleUrls: ['./app/components/products.css'],
             providers: [dataService_1.DataService]
         }), 
-        __metadata('design:paramtypes', [dataService_1.DataService, router_deprecated_1.Router])
+        __metadata('design:paramtypes', [dataService_1.DataService, router_1.Router])
     ], ProductsComponent);
     return ProductsComponent;
 }(paginated_1.Paginated));

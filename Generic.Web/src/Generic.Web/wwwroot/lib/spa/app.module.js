@@ -15,24 +15,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
-//import { FormsModule }   from '@angular/forms';
+var forms_1 = require('@angular/forms');
+var router_1 = require('@angular/router');
 var http_1 = require('@angular/http');
-var router_deprecated_1 = require('@angular/router-deprecated');
+var http_2 = require('@angular/http');
 var common_1 = require('@angular/common');
 var app_1 = require('./app');
+var app_routing_1 = require('./app.routing');
+var products_1 = require('./components/products');
+var productDetail_1 = require('./components/productDetail');
+var home_1 = require('./components/home');
+var photos_1 = require('./components/photos');
+var albums_1 = require('./components/albums');
+var albumPhotos_1 = require('./components/albumPhotos');
+var account_1 = require('./components/account/account');
+var login_1 = require('./components/account/login');
+var register_1 = require('./components/account/register');
 var dataService_1 = require('./core/services/dataService');
 var membershipService_1 = require('./core/services/membershipService');
 var utilityService_1 = require('./core/services/utilityService');
+var productDetail_service_1 = require('./core/services/productDetail.service');
 var AppBaseRequestOptions = (function (_super) {
     __extends(AppBaseRequestOptions, _super);
     function AppBaseRequestOptions() {
         _super.apply(this, arguments);
-        this.headers = new http_1.Headers({
+        this.headers = new http_2.Headers({
             'Content-Type': 'application/json'
         });
     }
     return AppBaseRequestOptions;
-}(http_1.BaseRequestOptions));
+}(http_2.BaseRequestOptions));
 var AppModule = (function () {
     function AppModule() {
     }
@@ -40,18 +52,32 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
+                router_1.RouterModule,
+                http_1.HttpModule,
+                app_routing_1.routing
             ],
-            declarations: [app_1.AppRoot],
-            bootstrap: [app_1.AppRoot],
+            declarations: [
+                app_1.AppRoot,
+                home_1.Home,
+                photos_1.Photos,
+                albums_1.Albums,
+                albumPhotos_1.AlbumPhotos,
+                products_1.ProductsComponent,
+                productDetail_1.ProductDetailComponent,
+                account_1.Account,
+                login_1.Login,
+                register_1.Register
+            ],
             providers: [
-                http_1.HTTP_PROVIDERS,
-                router_deprecated_1.ROUTER_PROVIDERS,
-                core_1.provide(http_1.RequestOptions, { useClass: AppBaseRequestOptions }),
+                core_1.provide(http_2.RequestOptions, { useClass: AppBaseRequestOptions }),
                 core_1.provide(common_1.LocationStrategy, { useClass: common_1.HashLocationStrategy }),
                 dataService_1.DataService,
                 membershipService_1.MembershipService,
-                utilityService_1.UtilityService
-            ]
+                utilityService_1.UtilityService,
+                productDetail_service_1.ProductDetailService
+            ],
+            bootstrap: [app_1.AppRoot]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

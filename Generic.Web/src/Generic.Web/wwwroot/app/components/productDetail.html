@@ -1,3 +1,43 @@
-﻿<div>
-    product details
+﻿<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Product Detail
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    <a [routerLink]="['/home']">Home</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/products']">Products</a>
+                </li>
+                <li class="active">Product Detail</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="_productDetail">
+        <div class="col-sm-6">
+            {{ _productDetail.Name }}
+        </div>
+        <div class="col-sm-6">
+            <div class="box container-fluid selected" *ngFor="let status of _productDetail.ProductStatuses">
+                <div class="col-sm-6">
+                     <img src="{{status.ImageUrl}}" alt="{{status.Status}}" class="img img-responsive full-width"/>
+                </div>
+                <div class="col-sm-6">
+                    <h1 class="text-center">{{status.Status}}</h1>
+                    <p class="goToDescription">
+                        {{status.StatusDescription}}
+                    </p>
+                    <p class="price">{{status.Price | currency :'USD':true:'1.2-2'}}</p>
+
+                    <p class="text-center buttons">
+                        <a class="btn btn-primary" href="basket.html"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

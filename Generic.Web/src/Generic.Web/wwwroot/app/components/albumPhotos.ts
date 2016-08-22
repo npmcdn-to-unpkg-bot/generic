@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from '@angular/common';
-import { RouterLink, RouteParams } from '@angular/router-deprecated'
+//import { RouterLink, RouteParams } from '@angular/router-deprecated'
 import { Photo } from '../core/domain/photo';
 import { Paginated } from '../core/common/paginated';
 import { DataService } from '../core/services/dataService';
@@ -11,8 +11,8 @@ import { OperationResult } from '../core/domain/operationResult';
 @Component({
     selector: 'album-photo',
     providers: [NotificationService],
-    templateUrl: './app/components/albumPhotos.html',
-    directives: [RouterLink]
+    templateUrl: './app/components/albumPhotos.html'
+    //directives: [RouterLink]
 })
 export class AlbumPhotos extends Paginated implements OnInit {
     private _albumsAPI: string = 'api/albums/';
@@ -24,13 +24,13 @@ export class AlbumPhotos extends Paginated implements OnInit {
 
     constructor(public dataService: DataService,
                 public utilityService: UtilityService,
-                public notificationService: NotificationService,
-                public routeParam: RouteParams) {
+                public notificationService: NotificationService
+                /*public routeParam: RouteParams*/) {
                 super(0, 0, 0);
     }
 
     ngOnInit() {
-        this._albumId = this.routeParam.get('id');
+        //this._albumId = this.routeParam.get('id');
         this._albumsAPI += this._albumId + '/photos/';
         this.dataService.set(this._albumsAPI, 12);
         this.getAlbumPhotos();

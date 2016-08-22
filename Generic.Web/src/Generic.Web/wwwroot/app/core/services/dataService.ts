@@ -24,7 +24,7 @@ export class DataService {
     }
 
     getSingle(id: number) {
-        const uri = `${this._baseUri}/${id}`;
+        const uri = `${this._baseUri}${id}`;
         return this.http.get(uri, { headers: new Headers() })
             .map(response => (<Response>response));
     }
